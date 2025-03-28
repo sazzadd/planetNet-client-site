@@ -1,10 +1,9 @@
-import axios from "axios";
 import { toast } from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
 import { imageUpload } from "../../api/utils";
+import useAuth from "../../hooks/useAuth";
 
 const SignUp = () => {
   const { createUser, updateUserProfile, signInWithGoogle, loading } =
@@ -20,14 +19,13 @@ const SignUp = () => {
     const image = form.image.files[0];
 
     // send img data to imgBB
-    const photoUrl = await imageUpload(image)
+    const photoURL = await imageUpload(image);
+    try {
       //2. User Registration
       const result = await createUser(email, password);
 
       //3. Save username & profile photo
-      await updateUserProfile(
-        name,img_url
-      );
+      await updateUserProfile(name, photoURL);
       console.log(result);
 
       navigate("/");
