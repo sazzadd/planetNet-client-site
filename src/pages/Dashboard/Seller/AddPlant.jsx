@@ -2,6 +2,9 @@ import { Helmet } from 'react-helmet-async'
 import AddPlantForm from '../../../components/Form/AddPlantForm'
 
 const AddPlant = () => {
+  const handleSubmit = async e =>{
+    e.preventDefault()
+  }
   return (
     <div>
       <Helmet>
@@ -9,7 +12,7 @@ const AddPlant = () => {
       </Helmet>
 
       {/* Form */}
-      <AddPlantForm />
+      <AddPlantForm handleSubmit={handleSubmit}/>
     </div>
   )
 }
