@@ -7,6 +7,7 @@ import useAxiosSecure, { axiosSecure } from './../../../hooks/useAxiosSecure';
 import toast from "react-hot-toast";
 
 const AddPlant = () => {
+  const [imagePreview, setImagePreview] = useState(null);
   const { user } = useAuth();
   const [uploadButtonText,setUploadButtonText] = useState('upload image')
   const axiosSecure = useAxiosSecure()
@@ -58,7 +59,10 @@ const AddPlant = () => {
       </Helmet>
 
       {/* Form */}
-      <AddPlantForm uploadButtonText={uploadButtonText} handleSubmit={handleSubmit} setUploadButtonText={setUploadButtonText} />
+      <AddPlantForm uploadButtonText={uploadButtonText} handleSubmit={handleSubmit} setUploadButtonText={setUploadButtonText} 
+      imagePreview={imagePreview}
+      setImagePreview={setImagePreview}
+      />
     </div>
   );
 };

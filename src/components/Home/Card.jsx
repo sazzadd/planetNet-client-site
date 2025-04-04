@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
 const Card = ({ plant }) => {
-  const { name, category, quantity, price, image, id } = plant ||{};
+  const { name, category, quantity, price, imageUrl, _id } = plant || {};
   return (
     <Link
-      to={`/plant/1`}
+      to={`/plant/${_id}`}
       className="col-span-1 cursor-pointer group shadow-xl p-3 rounded-xl"
     >
       <div className="flex flex-col gap-2 w-full">
@@ -25,7 +25,7 @@ const Card = ({ plant }) => {
                 group-hover:scale-110 
                 transition
               "
-            src="https://i.ibb.co.com/rMHmQP2/money-plant-in-feng-shui-brings-luck.jpg"
+            src={imageUrl}
             alt="Plant Image"
           />
           <div
@@ -37,10 +37,10 @@ const Card = ({ plant }) => {
           ></div>
         </div>
         <div className="font-semibold text-lg">{name}</div>
-        <div className="font-semibold text-lg">Category: Indoor</div>
-        <div className="font-semibold text-lg">Quantity: 10</div>
+        <div className="font-semibold text-lg">Category: {category}</div>
+        <div className="font-semibold text-lg">Quantity: {quantity}</div>
         <div className="flex flex-row items-center gap-1">
-          <div className="font-semibold"> Price: 15$</div>
+          <div className="font-semibold"> Price:{price}</div>
         </div>
       </div>
     </Link>
