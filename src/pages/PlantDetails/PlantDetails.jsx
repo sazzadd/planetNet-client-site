@@ -1,3 +1,5 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
@@ -7,10 +9,24 @@ import Container from "../../components/Shared/Container";
 import Heading from "../../components/Shared/Heading";
 
 const PlantDetails = () => {
-  let [isOpen, setIsOpen] = useState(false);
-  
   const { id } = useParams();
+  let [isOpen, setIsOpen] = useState(false);
+  const {
+    data: plant = [],
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["plant", id],
+    queryFn: async () => {
+      const { data } = await axios(
+        `${import.meta.env.VITE_API_URL}/plant/${id}`
+      );
+      return data;
+    },
+  });
+
   console.log(id);
+  console.log(plant)
   const closeModal = () => {
     setIsOpen(false);
   };
