@@ -27,7 +27,7 @@ const AddPlantForm = ({
             {/* Name */}
             <div className="space-y-1 text-sm">
               <label htmlFor="name" className="block text-gray-600">
-                Name:
+                Name
               </label>
               <input
                 className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
